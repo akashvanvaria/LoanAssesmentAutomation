@@ -1,0 +1,2433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specificationSet xmlns="http://www.yawlfoundation.org/yawlschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" xsi:schemaLocation="http://www.yawlfoundation.org/yawlschema http://www.yawlfoundation.org/yawlschema/YAWL_Schema4.0.xsd">
+  <specification uri="Loan_Assesment_Final">
+    <documentation>No description provided</documentation>
+    <metaData>
+      <creator>Lenovo Ideapad</creator>
+      <description>No description provided</description>
+      <coverage>4.5.785</coverage>
+      <version>0.1</version>
+      <persistent>false</persistent>
+      <identifier>UID_84fc2db2-1dcd-4512-a8ab-2116f1c3ee88</identifier>
+    </metaData>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="LoanApplication">
+        <xs:sequence>
+          <xs:element name="Title" type="xs:string" minOccurs="0" />
+          <xs:element name="FirstName" type="xs:string" minOccurs="0" />
+          <xs:element name="Lastname" type="xs:string" minOccurs="0" />
+          <xs:element name="DOB" type="xs:date" minOccurs="0" />
+          <xs:element name="Email" type="xs:string" minOccurs="0" />
+          <xs:element name="Phone" type="xs:long" minOccurs="0" />
+          <xs:element name="StreetName" type="xs:string" minOccurs="0" />
+          <xs:element name="StreetNumber" type="xs:int" minOccurs="0" />
+          <xs:element name="City" type="xs:string" minOccurs="0" />
+          <xs:element name="PinCode" type="xs:int" minOccurs="0" />
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="PreviousAddress">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="StreetName" type="xs:string" />
+                <xs:element name="StreetNumber" type="xs:int" />
+                <xs:element name="City" type="xs:string" />
+                <xs:element name="PinCode" type="xs:int" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CurrentEmployer" type="xs:string" minOccurs="0" />
+          <xs:element name="MonthlyNetSalary" type="xs:double" minOccurs="0" />
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OtherIncome">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Type" type="xs:string" />
+                <xs:element name="MonthlyNetIncome" type="xs:double" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TotalMonthlyOutgoings" type="xs:double" minOccurs="0" />
+          <xs:element name="ExcludingExistingLoans" type="xs:double" minOccurs="0" />
+          <xs:element name="CreditCardRepayments" type="xs:string" minOccurs="0" />
+          <xs:element maxOccurs="unbounded" name="BankAccounts">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="BankName" type="xs:string" minOccurs="0" />
+                <xs:element name="TypeOfAccount" type="xs:string" minOccurs="0" />
+                <xs:element name="AccountNumber" type="xs:string" minOccurs="0" />
+                <xs:element name="CurrentCustomer" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PropertyInformation">
+        <xs:sequence>
+          <xs:element name="TypeOfProperty" type="xs:string" minOccurs="0" />
+          <xs:element name="PropertyAddress" type="xs:string" minOccurs="0" />
+          <xs:element name="StreetName" type="xs:string" minOccurs="0" />
+          <xs:element name="StreetNumber" type="xs:int" minOccurs="0" />
+          <xs:element name="City" type="xs:string" minOccurs="0" />
+          <xs:element name="PostCode" type="xs:int" minOccurs="0" />
+          <xs:element name="PurchasePrice" type="xs:double" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LoanInformation">
+        <xs:sequence>
+          <xs:element name="LoanAmount" type="xs:double" minOccurs="0" />
+          <xs:element name="NumberOfMonths" type="xs:int" minOccurs="0" />
+          <xs:element name="StartDate" type="xs:date" minOccurs="0" />
+          <xs:element name="InterestRate" type="xs:double" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LifeInsuranceQuoteRequired">
+        <xs:sequence>
+          <xs:element name="LifeInsuranceRequired" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreditCardQuoteRequired">
+        <xs:sequence>
+          <xs:element name="CreditRequired" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="HomeInsuranceQuoteRequired">
+        <xs:sequence>
+          <xs:element name="HomeInsuranceRequired" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdministrationInformation">
+        <xs:sequence>
+          <xs:element name="LoanApplicationID" type="xs:string" minOccurs="0" />
+          <xs:element name="SubmissionDate" type="xs:date" minOccurs="0" />
+          <xs:element name="RevisionDate" type="xs:date" minOccurs="0" />
+          <xs:element name="Status" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Approved" />
+                <xs:enumeration value="Complete" />
+                <xs:enumeration value="Incomplete" />
+                <xs:enumeration value="Assessed" />
+                <xs:enumeration value="Rejected" />
+                <xs:enumeration value="Canceled" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="Comments" type="xs:string" minOccurs="0" />
+          <xs:element name="Eligibility" type="xs:boolean" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CurrentCreditCardInformation">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LoanInFiveYears">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="LoanType" type="xs:string" />
+                <xs:element name="Amount" type="xs:double" />
+                <xs:element name="DurationInYears" type="xs:int" />
+                <xs:element name="OutstandingAmount" type="xs:double" />
+                <xs:element name="MonthlyRepayments" type="xs:double" />
+                <xs:element name="InterestRate" type="xs:double" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CreditCardInfo">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Provider" type="xs:string" />
+                <xs:element name="CreditLimit" type="xs:double" />
+                <xs:element name="OutstandingAmount" type="xs:double" />
+                <xs:element name="MonthlyRepayments" type="xs:double" />
+                <xs:element name="InterestRate" type="xs:double" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PublicRecordInformation">
+        <xs:sequence>
+          <xs:element name="CourtJudgementInformation" type="xs:int" minOccurs="0" />
+          <xs:element name="BankruptcyInformation" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="DateRaised" type="xs:date" />
+                <xs:element name="Current" type="xs:boolean" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreditAssessment">
+        <xs:sequence>
+          <xs:element name="CreditAssessmentResult">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="AAA" />
+                <xs:enumeration value="AA" />
+                <xs:enumeration value="A" />
+                <xs:enumeration value="BBB" />
+                <xs:enumeration value="BB" />
+                <xs:enumeration value="B" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RiskAssesment">
+        <xs:sequence>
+          <xs:element name="RiskWeight" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PropertyAppraisal">
+        <xs:sequence>
+          <xs:element name="PropertyAppraiserIdentifier" type="xs:string" />
+          <xs:element name="SurroundingPropertiesValue1" type="xs:double" />
+          <xs:element name="SurroundingPropertiesValue2" type="xs:double" />
+          <xs:element name="SurroundingPropertiesValue3" type="xs:double" />
+          <xs:element name="EstimatedPropertyMarketValue" type="xs:double" />
+          <xs:element name="Comments" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RepaymentSchedule">
+        <xs:sequence>
+          <xs:element name="MonthlyRepaymentAmount" type="xs:double" />
+          <xs:element name="NumberOfRepayment" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LifeInsuranceQuote">
+        <xs:sequence>
+          <xs:element name="LifeInsuranceTotalCost" type="xs:double" />
+          <xs:element name="InsuranceSalesRepresentativeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="HomeInsuranceQuote">
+        <xs:sequence>
+          <xs:element name="HomeInsuranceTotalCost" type="xs:double" />
+          <xs:element name="InsuranceSalesRepresentativeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CreditCardQuote">
+        <xs:sequence>
+          <xs:element name="CardLimit" type="xs:double" />
+          <xs:element name="FinanceOfficerName" type="xs:string" />
+          <xs:element name="NormalInterestRate" type="xs:double" />
+          <xs:element name="DiscountedInterestRate" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AgreementSummary">
+        <xs:sequence>
+          <xs:element name="ConditionsAgreed" type="xs:boolean" minOccurs="0" />
+          <xs:element name="RepaymentAgreed" type="xs:boolean" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <decomposition id="Net" isRootNet="true" xsi:type="NetFactsType">
+      <localVariable>
+        <index>0</index>
+        <name>CreditAssessment</name>
+        <type>CreditAssessment</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>1</index>
+        <name>CreditCardQuote</name>
+        <type>CreditCardQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>2</index>
+        <name>PropertyAppraisal</name>
+        <type>PropertyAppraisal</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>3</index>
+        <name>RepaymentSchedule</name>
+        <type>RepaymentSchedule</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>4</index>
+        <name>RiskWeight</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>5</index>
+        <name>RiskAssesment</name>
+        <type>RiskAssesment</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>6</index>
+        <name>PropertyInformation</name>
+        <type>PropertyInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>7</index>
+        <name>LoanInformation</name>
+        <type>LoanInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>8</index>
+        <name>CurrentCreditInformation</name>
+        <type>CurrentCreditCardInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>9</index>
+        <name>AgreementSummary</name>
+        <type>AgreementSummary</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>10</index>
+        <name>LifeInsuranceQuote</name>
+        <type>LifeInsuranceQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>11</index>
+        <name>HomeInsuranceQuote</name>
+        <type>HomeInsuranceQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>12</index>
+        <name>HomeInsuranceQuoteRequired</name>
+        <type>HomeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>13</index>
+        <name>CreditCardQuoteRequired</name>
+        <type>CreditCardQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>14</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </localVariable>
+      <localVariable>
+        <index>15</index>
+        <name>PreviousPropertyInformation</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>16</index>
+        <name>DOB</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </localVariable>
+      <localVariable>
+        <index>17</index>
+        <name>SubmissionDate</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </localVariable>
+      <localVariable>
+        <index>18</index>
+        <name>PublicRecordInformation</name>
+        <type>PublicRecordInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>19</index>
+        <name>Current</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>false</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>20</index>
+        <name>MonthlyNetIncome</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>21</index>
+        <name>MonthlyRepayments</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>22</index>
+        <name>Status</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>23</index>
+        <name>Comments</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>24</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>25</index>
+        <name>AdministrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </localVariable>
+      <localVariable>
+        <index>26</index>
+        <name>LifeInsuranceQuoteRequired</name>
+        <type>LifeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>27</index>
+        <name>NumberOfMonths</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>28</index>
+        <name>InterestRate</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>29</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>30</index>
+        <name>LoanAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>31</index>
+        <name>PurchasePrice</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>32</index>
+        <name>CourtJudgementInformation</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>33</index>
+        <name>PreviousAddressSum</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>34</index>
+        <name>CurrentCustomer</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>35</index>
+        <name>EstimatedPropertyMarketValue</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>36</index>
+        <name>NumberOfPreviousAddress</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>37</index>
+        <name>MonthlyNetSalary</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>38</index>
+        <name>DepositPaid</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>39</index>
+        <name>MonthlyAvailableIncome</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <localVariable>
+        <index>40</index>
+        <name>CreditAssessmentResult</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue />
+      </localVariable>
+      <localVariable>
+        <index>41</index>
+        <name>ExcludingExistingLoans</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <initialValue>0</initialValue>
+      </localVariable>
+      <processControlElements>
+        <inputCondition id="InputCondition">
+          <flowsInto>
+            <nextElementRef id="Enter_the_Application_Data" />
+          </flowsInto>
+        </inputCondition>
+        <task id="Enter_the_Application_Data">
+          <name>Enter the Application Data</name>
+          <flowsInto>
+            <nextElementRef id="Generate_Application_ID" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;PropertyInformation&gt;{/Enter_the_Application_Data/PropertyInformation/*}&lt;/PropertyInformation&gt;" />
+              <mapsTo>PropertyInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CreditCardQuoteRequired&gt;{/Enter_the_Application_Data/CreditCardQuoteRequired/*}&lt;/CreditCardQuoteRequired&gt;" />
+              <mapsTo>CreditCardQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplication&gt;{/Enter_the_Application_Data/LoanApplication/*}&lt;/LoanApplication&gt;" />
+              <mapsTo>LoanApplication</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;HomeInsuranceQuoteRequired&gt;{/Enter_the_Application_Data/HomeInsuranceQuoteRequired/*}&lt;/HomeInsuranceQuoteRequired&gt;" />
+              <mapsTo>HomeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LifeInsuranceQuoteRequired&gt;{/Enter_the_Application_Data/LifeInsuranceQuoteRequired/*}&lt;/LifeInsuranceQuoteRequired&gt;" />
+              <mapsTo>LifeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanInformation&gt;{/Enter_the_Application_Data/LoanInformation/*}&lt;/LoanInformation&gt;" />
+              <mapsTo>LoanInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;PreviousPropertyInformation&gt;{/Enter_the_Application_Data/LoanApplication/PreviousPropertyInformation/*}&lt;/PreviousPropertyInformation&gt;" />
+              <mapsTo>PreviousPropertyInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;SubmissionDate&gt;{/Enter_the_Application_Data/SubmissionDate/text()}&lt;/SubmissionDate&gt;" />
+              <mapsTo>SubmissionDate</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b</participant>
+                  <participant>PA-d2377be0-2bbe-4577-9acf-92247f0bd88e</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RoundRobinByTime</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Enter_the_Application_Data" />
+        </task>
+        <task id="Generate_Application_ID">
+          <name>Generate Application ID</name>
+          <flowsInto>
+            <nextElementRef id="Check_for_completeness" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;SubmissionDate&gt;{/Net/SubmissionDate/text()}&lt;/SubmissionDate&gt;" />
+              <mapsTo>SubmissionDate</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;DOB&gt;{/Net/LoanApplication/DOB/text()}&lt;/DOB&gt;" />
+              <mapsTo>DOB</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Generate_Application_ID/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Net/AdministrationInformation/LoanApplicationID}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Generate_Application_ID" />
+        </task>
+        <task id="Check_for_completeness">
+          <name>Check for completeness</name>
+          <flowsInto>
+            <nextElementRef id="Calculate_Loan_Repayment" />
+            <isDefaultFlow />
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Update_Application" />
+            <predicate ordering="0">/Net/AdministrationInformation//Status/text()='Incomplete'</predicate>
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;AdminstrationInformation&gt;&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;&lt;/AdminstrationInformation&gt;" />
+              <mapsTo>AdminstrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplication&gt;{/Net/LoanApplication/*}&lt;/LoanApplication&gt;" />
+              <mapsTo>LoanApplication</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Check_for_completeness/AdminstrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b</participant>
+                  <participant>PA-d2377be0-2bbe-4577-9acf-92247f0bd88e</participant>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RoundRobinByTime</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Check_for_completeness" />
+        </task>
+        <task id="Calculate_Loan_Repayment">
+          <name>Calculate Loan Repayment</name>
+          <flowsInto>
+            <nextElementRef id="Perform_Checks" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LoanAmount&gt;{/Net/LoanInformation/LoanAmount /text()}&lt;/LoanAmount&gt;" />
+              <mapsTo>LoanAmount</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;InterestRate&gt;{/Net/LoanInformation/InterestRate/text()}&lt;/InterestRate&gt;" />
+              <mapsTo>InterestRate</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;NumberOfMonths&gt;{/Net/LoanInformation/NumberOfMonths/text()}&lt;/NumberOfMonths&gt;" />
+              <mapsTo>NumberOfMonths</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;MonthlyRepaymentAmount&gt;{/Calculate_Loan_Repayment/MonthlyRepaymentAmount/text()}&lt;/MonthlyRepaymentAmount&gt;" />
+              <mapsTo>MonthlyRepaymentAmount</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Calculate_Loan_Repayment" />
+        </task>
+        <task id="Update_Application">
+          <name>Update Application</name>
+          <flowsInto>
+            <nextElementRef id="Rejected_Application" />
+            <predicate>/Net/AdministrationInformation/Status='Canceled' or 'Rejected'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Check_for_completeness" />
+            <predicate>/Net/AdministrationInformation/Status='Complete'</predicate>
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="xor" />
+          <split code="or" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Net/AdministrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplication&gt;{/Net/LoanApplication/*}&lt;/LoanApplication&gt;" />
+              <mapsTo>LoanApplication</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;LoanApplication&gt;{/Update_Application/LoanApplication/*}&lt;/LoanApplication&gt;" />
+              <mapsTo>LoanApplication</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Update_Application/AdministrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </completedMappings>
+          <timer>
+            <trigger>OnEnabled</trigger>
+            <duration>P5D</duration>
+          </timer>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b</participant>
+                  <participant>PA-d2377be0-2bbe-4577-9acf-92247f0bd88e</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RoundRobinByTime</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Update_Application" />
+        </task>
+        <task id="Perform_Checks">
+          <name>Perform Checks</name>
+          <flowsInto>
+            <nextElementRef id="Credit_History_Check" />
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Property_Appraisal_Check" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LoanInformation&gt;{/Net/LoanInformation/*}&lt;/LoanInformation&gt;" />
+              <mapsTo>LoanInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;MonthlyRepaymentAmount&gt;{/Net/MonthlyRepaymentAmount/text()}&lt;/MonthlyRepaymentAmount&gt;" />
+              <mapsTo>MonthlyRepaymentAmount</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Perform_Checks" />
+        </task>
+        <task id="Rejected_Application">
+          <name>Rejected Application</name>
+          <flowsInto>
+            <nextElementRef id="Archive_application" />
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;AdminstrationInformation&gt;{/Net/AdministrationInformation/*}&lt;/AdminstrationInformation&gt;" />
+              <mapsTo>AdminstrationInformation</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Update_Client/AdminstrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Cancel_Application" />
+        </task>
+        <task id="Archive_application">
+          <name>Archive application</name>
+          <flowsInto>
+            <nextElementRef id="OutputCondition" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;Status&gt;{/Net/AdministrationInformation/Status/text()}&lt;/Status&gt;" />
+              <mapsTo>Status</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;SubmissionDate&gt;{/Net/AdministrationInformation/SubmissionDate/text()}&lt;/SubmissionDate&gt;" />
+              <mapsTo>SubmissionDate</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Comments&gt;{/Net/AdministrationInformation/Comments/text()}&lt;/Comments&gt;" />
+              <mapsTo>Comments</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/AdministrationInformation/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Archive_application" />
+        </task>
+        <task id="Credit_History_Check">
+          <name>Credit History Check</name>
+          <flowsInto>
+            <nextElementRef id="Perform_Risk_Assesment" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;CurrentCreditInformation&gt;{/Credit_History_Check/CurrentCreditInformation/*}&lt;/CurrentCreditInformation&gt;" />
+              <mapsTo>CurrentCreditInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;PublicRecordInformation&gt;{/Credit_History_Check/PublicRecordInformation/*}&lt;/PublicRecordInformation&gt;" />
+              <mapsTo>PublicRecordInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CreditAssessment&gt;{/Credit_History_Check/CreditAssessment/*}&lt;/CreditAssessment&gt;" />
+              <mapsTo>CreditAssessment</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-cac7b284-ba12-4fde-acf1-230c134753de</participant>
+                  <role>RO-efb536f4-4a54-497b-9ea6-2246c26f1449</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RandomChoice</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Credit_History_Check" />
+        </task>
+        <task id="Property_Appraisal_Check">
+          <name>Property Appraisal Check</name>
+          <flowsInto>
+            <nextElementRef id="Perform_Risk_Assesment" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;PropertyAppraisal&gt;{/Property_Appraisal_Check/PropertyAppraisal/*}&lt;/PropertyAppraisal&gt;" />
+              <mapsTo>PropertyAppraisal</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-4e90075f-0a4c-49e0-b19c-bd19e7f767a2</participant>
+                  <role>RO-01f2dae3-781e-4405-b745-23b22c536156</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>ShortestQueue</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Property_Appraisal_Check" />
+        </task>
+        <task id="Perform_Risk_Assesment">
+          <name>Perform Risk Assesment</name>
+          <flowsInto>
+            <nextElementRef id="Eligibilty_Check" />
+            <isDefaultFlow />
+          </flowsInto>
+          <join code="and" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;MonthlyNetSalary&gt;{/Net/LoanApplication/MonthlyNetSalary/text()}&lt;/MonthlyNetSalary&gt;" />
+              <mapsTo>MonthlyNetSalary</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;EstimatedPropertyMarketValue&gt;{/Net/PropertyAppraisal/EstimatedPropertyMarketValue/text()}&lt;/EstimatedPropertyMarketValue&gt;" />
+              <mapsTo>EstimatedPropertyMarketValue</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;MonthlyNetIncome&gt;{/Net/LoanApplication//MonthlyNetIncome/text()}&lt;/MonthlyNetIncome&gt;" />
+              <mapsTo>MonthlyNetIncome</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;ExcludingExistingLoans&gt;{/Net/LoanApplication/ExcludingExistingLoans/text()}&lt;/ExcludingExistingLoans&gt;" />
+              <mapsTo>ExcludingExistingLoans</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;NumberOfPreviousAddress&gt;{/Net/LoanApplication/count(PreviousAddress)}&lt;/NumberOfPreviousAddress&gt;" />
+              <mapsTo>NumberOfPreviousAddress</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;PurchasePrice&gt;{/Net/PropertyInformation/PurchasePrice/text()}&lt;/PurchasePrice&gt;" />
+              <mapsTo>PurchasePrice</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CreditAssessmentResult&gt;{/Net/CreditAssessment/CreditAssessmentResult/text()}&lt;/CreditAssessmentResult&gt;" />
+              <mapsTo>CreditAssessmentResult</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;PreviousAddressSum&gt;{/Net/PropertyAppraisal/avg((SurroundingPropertiesValue1,SurroundingPropertiesValue2,SurroundingPropertiesValue3))}&lt;/PreviousAddressSum&gt;" />
+              <mapsTo>PreviousAddressSum</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanAmount&gt;{/Net/LoanInformation/LoanAmount/text()}&lt;/LoanAmount&gt;" />
+              <mapsTo>LoanAmount</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CurrentCustomer&gt;{/Net/LoanApplication//CurrentCustomer/text()}&lt;/CurrentCustomer&gt;" />
+              <mapsTo>CurrentCustomer</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CourtJudgementInformation&gt;{/Net/PublicRecordInformation/CourtJudgementInformation/text()}&lt;/CourtJudgementInformation&gt;" />
+              <mapsTo>CourtJudgementInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;MonthlyRepaymentAmount&gt;{/Net/MonthlyRepaymentAmount/text()}&lt;/MonthlyRepaymentAmount&gt;" />
+              <mapsTo>MonthlyRepaymentAmount</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;Current&gt;{/Net/PublicRecordInformation//Current/text()}&lt;/Current&gt;" />
+              <mapsTo>Current</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;RiskWeight&gt;{/Perform_Risk_Assesement/RiskWeight/text()}&lt;/RiskWeight&gt;" />
+              <mapsTo>RiskWeight</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="user" />
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Perform_Risk_Assesement" />
+        </task>
+        <task id="Eligibilty_Check">
+          <name>Eligibilty Check</name>
+          <flowsInto>
+            <nextElementRef id="Prepare_and_Send_Acceptance_package" />
+            <isDefaultFlow />
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Rejected_Application" />
+            <predicate ordering="0">/Net/AdministrationInformation/Eligibility/text()='false'</predicate>
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;RiskWeight&gt;{/Net/RiskWeight/text()}&lt;/RiskWeight&gt;" />
+              <mapsTo>RiskWeight</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;RiskAssesment&gt;&lt;RiskWeight&gt;{/Net/RiskWeight/text()}&lt;/RiskWeight&gt;&lt;/RiskAssesment&gt;" />
+              <mapsTo>RiskAssesment</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Eligibilty_Check/AdministrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b</participant>
+                  <participant>PA-d2377be0-2bbe-4577-9acf-92247f0bd88e</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RandomChoice</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Eligibilty_Check" />
+        </task>
+        <task id="Prepare_and_Send_Acceptance_package">
+          <name>Prepare and Send Acceptance package</name>
+          <flowsInto>
+            <nextElementRef id="Send_Home_Insurance_Quote" />
+            <predicate>/Net/HomeInsuranceQuoteRequired/HomeInsuranceRequired/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Send_Life_Insurance_Quote" />
+            <predicate>/Net/LifeInsuranceQuoteRequired/LifeInsuranceRequired/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Verify_repayment_agreement" />
+            <predicate>true()</predicate>
+            <isDefaultFlow />
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Send_Credit_Card_Quote" />
+            <predicate>/Net/CreditCardQuoteRequired/CreditRequired/text()='true'</predicate>
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Rejected_Application" />
+            <predicate>/Net/AdministrationInformation/Status/text()='Rejected' or'Canceled'</predicate>
+          </flowsInto>
+          <join code="xor" />
+          <split code="or" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LifeInsuranceQuoteRequired&gt;{/Net/LifeInsuranceQuoteRequired/*}&lt;/LifeInsuranceQuoteRequired&gt;" />
+              <mapsTo>LifeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplication&gt;{/Net/LoanApplication/*}&lt;/LoanApplication&gt;" />
+              <mapsTo>LoanApplication</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;NumberOfMonths&gt;{/Net/LoanInformation/NumberOfMonths/text()}&lt;/NumberOfMonths&gt;" />
+              <mapsTo>NumberOfMonths</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;HomeInsuranceQuoteRequired&gt;{/Net/HomeInsuranceQuoteRequired/*}&lt;/HomeInsuranceQuoteRequired&gt;" />
+              <mapsTo>HomeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;AdminstrationInformation&gt;{/Net/AdministrationInformation/*}&lt;/AdminstrationInformation&gt;" />
+              <mapsTo>AdminstrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;CreditCardQuoteRequired&gt;{/Net/CreditCardQuoteRequired/*}&lt;/CreditCardQuoteRequired&gt;" />
+              <mapsTo>CreditCardQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;MonthlyRepaymentAmount&gt;{/Net/MonthlyRepaymentAmount/text()}&lt;/MonthlyRepaymentAmount&gt;" />
+              <mapsTo>MonthlyRepaymentAmount</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;AdministrationInformation&gt;{/Send_Acceptance_package/AdminstrationInformation/*}&lt;/AdministrationInformation&gt;" />
+              <mapsTo>AdministrationInformation</mapsTo>
+            </mapping>
+          </completedMappings>
+          <timer>
+            <trigger>OnEnabled</trigger>
+            <duration>P14D</duration>
+          </timer>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b</participant>
+                  <participant>PA-d2377be0-2bbe-4577-9acf-92247f0bd88e</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>RandomChoice</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Send_Acceptance_package" />
+        </task>
+        <task id="Send_Credit_Card_Quote">
+          <name>Send Credit Card Quote</name>
+          <flowsInto>
+            <nextElementRef id="Verify_repayment_agreement" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;CreditCardQuoteRequired&gt;{/Net/CreditCardQuoteRequired/*}&lt;/CreditCardQuoteRequired&gt;" />
+              <mapsTo>CreditCardQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;CreditCardQuote&gt;{/Send_Credit_Card_Quote/CreditCardQuote/*}&lt;/CreditCardQuote&gt;" />
+              <mapsTo>CreditCardQuote</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-cac7b284-ba12-4fde-acf1-230c134753de</participant>
+                  <role>RO-efb536f4-4a54-497b-9ea6-2246c26f1449</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Send_Credit_Card_Quote" />
+        </task>
+        <task id="Send_Home_Insurance_Quote">
+          <name>Send Home Insurance Quote</name>
+          <flowsInto>
+            <nextElementRef id="Verify_repayment_agreement" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;HomeInsuranceQuoteRequired&gt;{/Net/HomeInsuranceQuoteRequired/*}&lt;/HomeInsuranceQuoteRequired&gt;" />
+              <mapsTo>HomeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-78c79485-8735-49b5-b8e8-7e6ffbaaef57</participant>
+                  <role>RO-27f0c4f5-cd15-41b3-a412-ba402dfc543e</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>FastestToStart</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Send_Home_Insurance_Quote" />
+        </task>
+        <task id="Send_Life_Insurance_Quote">
+          <name>Send Life Insurance Quote</name>
+          <flowsInto>
+            <nextElementRef id="Verify_repayment_agreement" />
+          </flowsInto>
+          <join code="xor" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LifeInsuranceQuoteRequired&gt;{/Net/LifeInsuranceQuoteRequired/*}&lt;/LifeInsuranceQuoteRequired&gt;" />
+              <mapsTo>LifeInsuranceQuoteRequired</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;LifeInsuranceQuote&gt;{/Send_Life_Insurance_Quote/LifeInsuranceQuote/*}&lt;/LifeInsuranceQuote&gt;" />
+              <mapsTo>LifeInsuranceQuote</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-78c79485-8735-49b5-b8e8-7e6ffbaaef57</participant>
+                  <role>RO-27f0c4f5-cd15-41b3-a412-ba402dfc543e</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="system">
+              <allocator>
+                <name>FastestToStart</name>
+              </allocator>
+            </allocate>
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Send_Life_Insurance_Quote" />
+        </task>
+        <task id="Verify_repayment_agreement">
+          <name>Verify repayment agreement</name>
+          <flowsInto>
+            <nextElementRef id="Final_Decision" />
+          </flowsInto>
+          <join code="or" />
+          <split code="and" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-aa13a790-41d5-4d0f-bae9-b7058a3c8dfc</participant>
+                  <participant>PA-bf8646b6-43b1-4109-bb22-7eff33afba63</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Verify_repayment_agreement" />
+        </task>
+        <task id="Final_Decision">
+          <name>Final Decision</name>
+          <flowsInto>
+            <nextElementRef id="Archive_application" />
+            <isDefaultFlow />
+          </flowsInto>
+          <flowsInto>
+            <nextElementRef id="Rejected_Application" />
+            <predicate ordering="0">/Net/AdministrationInformation/Status='Canceled'</predicate>
+          </flowsInto>
+          <join code="xor" />
+          <split code="xor" />
+          <startingMappings>
+            <mapping>
+              <expression query="&lt;AgreementSummary&gt;{/Net/AgreementSummary/*}&lt;/AgreementSummary&gt;" />
+              <mapsTo>AgreementSummary</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;AdminstrationInformation&gt;{/Net/AdministrationInformation/*}&lt;/AdminstrationInformation&gt;" />
+              <mapsTo>AdminstrationInformation</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;MonthlyRepaymentAmount&gt;{/Net/MonthlyRepaymentAmount/text()}&lt;/MonthlyRepaymentAmount&gt;" />
+              <mapsTo>MonthlyRepaymentAmount</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;NumberOfMonths&gt;{/Net/LoanInformation/NumberOfMonths/text()}&lt;/NumberOfMonths&gt;" />
+              <mapsTo>NumberOfMonths</mapsTo>
+            </mapping>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Net/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </startingMappings>
+          <completedMappings>
+            <mapping>
+              <expression query="&lt;LoanApplicationID&gt;{/Final_Decision/LoanApplicationID/text()}&lt;/LoanApplicationID&gt;" />
+              <mapsTo>LoanApplicationID</mapsTo>
+            </mapping>
+          </completedMappings>
+          <resourcing>
+            <offer initiator="system">
+              <distributionSet>
+                <initialSet>
+                  <participant>PA-aa13a790-41d5-4d0f-bae9-b7058a3c8dfc</participant>
+                  <participant>PA-bf8646b6-43b1-4109-bb22-7eff33afba63</participant>
+                  <role>RO-e90a577f-162e-4d2e-b7f2-b71d39e5aceb</role>
+                </initialSet>
+              </distributionSet>
+            </offer>
+            <allocate initiator="user" />
+            <start initiator="user" />
+          </resourcing>
+          <decomposesTo id="Final_Decision" />
+        </task>
+        <outputCondition id="OutputCondition" />
+      </processControlElements>
+    </decomposition>
+    <decomposition id="Archive_application" xsi:type="WebServiceGatewayFactsType">
+      <name>Archive application</name>
+      <inputParam>
+        <index>0</index>
+        <name>Status</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>Comments</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>SubmissionDate</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <yawlService id="http://localhost:8080/ArchiveLoanApplication/ib" />
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Calculate_Loan_Repayment" xsi:type="WebServiceGatewayFactsType">
+      <name>Calculate Loan Repayment</name>
+      <inputParam>
+        <index>0</index>
+        <name>NumberOfMonths</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>InterestRate</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>LoanAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>2</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <codelet>org.ifn653.Unique_ID.RepaymentAmountCalculator</codelet>
+      <externalInteraction>automated</externalInteraction>
+    </decomposition>
+    <decomposition id="Cancel_Application" xsi:type="WebServiceGatewayFactsType">
+      <name>Cancel Application</name>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Check_for_completeness" xsi:type="WebServiceGatewayFactsType">
+      <name>Check for completeness</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Credit_History_Check" xsi:type="WebServiceGatewayFactsType">
+      <name>Credit History Check</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>CurrentCreditInformation</name>
+        <type>CurrentCreditCardInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>2</index>
+        <name>PublicRecordInformation</name>
+        <type>PublicRecordInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>3</index>
+        <name>CreditAssessment</name>
+        <type>CreditAssessment</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Eligibilty_Check" xsi:type="WebServiceGatewayFactsType">
+      <name>Eligibilty Check</name>
+      <inputParam>
+        <index>0</index>
+        <name>RiskAssesment</name>
+        <type>RiskAssesment</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>AdministrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>RiskWeight</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>AdministrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Enter_the_Application_Data" xsi:type="WebServiceGatewayFactsType">
+      <name>Enter the Application Data</name>
+      <outputParam>
+        <index>0</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <outputParam>
+        <index>1</index>
+        <name>PropertyInformation</name>
+        <type>PropertyInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>2</index>
+        <name>LoanInformation</name>
+        <type>LoanInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>3</index>
+        <name>CreditCardQuoteRequired</name>
+        <type>CreditCardQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>4</index>
+        <name>HomeInsuranceQuoteRequired</name>
+        <type>HomeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>5</index>
+        <name>LifeInsuranceQuoteRequired</name>
+        <type>LifeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>6</index>
+        <name>SubmissionDate</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Final_Decision" xsi:type="WebServiceGatewayFactsType">
+      <name>Final Decision</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>AgreementSummary</name>
+        <type>AgreementSummary</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>NumberOfMonths</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>1</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Generate_Application_ID" xsi:type="WebServiceGatewayFactsType">
+      <name>Generate Application ID</name>
+      <inputParam>
+        <index>2</index>
+        <name>DOB</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>SubmissionDate</name>
+        <type>date</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <codelet>org.ifn653.Unique_ID.Unique_ID</codelet>
+      <externalInteraction>automated</externalInteraction>
+    </decomposition>
+    <decomposition id="Perform_Checks" xsi:type="WebServiceGatewayFactsType">
+      <name>Perform Checks</name>
+      <inputParam>
+        <index>0</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>LoanInformation</name>
+        <type>LoanInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Perform_Risk_Assesement" xsi:type="WebServiceGatewayFactsType">
+      <name>Perform Risk Assesement</name>
+      <inputParam>
+        <index>0</index>
+        <name>PurchasePrice</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>LoanAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>CreditAssessmentResult</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>Current</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>CourtJudgementInformation</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>PreviousAddressSum</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>6</index>
+        <name>EstimatedPropertyMarketValue</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>7</index>
+        <name>CurrentCustomer</name>
+        <type>boolean</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>8</index>
+        <name>NumberOfPreviousAddress</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>9</index>
+        <name>MonthlyNetSalary</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>10</index>
+        <name>MonthlyNetIncome</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>12</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>13</index>
+        <name>ExcludingExistingLoans</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>11</index>
+        <name>RiskWeight</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <yawlService id="http://localhost:8080/RiskAssesment/ib" />
+      <codelet>org.ifn653.Unique_ID.RepaymentAmountCalculator</codelet>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Property_Appraisal_Check" xsi:type="WebServiceGatewayFactsType">
+      <name>Property Appraisal Check</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>PropertyAppraisal</name>
+        <type>PropertyAppraisal</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Send_Acceptance_package" xsi:type="WebServiceGatewayFactsType">
+      <name>Send Acceptance package</name>
+      <inputParam>
+        <index>0</index>
+        <name>MonthlyRepaymentAmount</name>
+        <type>double</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>NumberOfMonths</name>
+        <type>int</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>3</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>4</index>
+        <name>CreditCardQuoteRequired</name>
+        <type>CreditCardQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>5</index>
+        <name>HomeInsuranceQuoteRequired</name>
+        <type>HomeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>6</index>
+        <name>LifeInsuranceQuoteRequired</name>
+        <type>LifeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>3</index>
+        <name>AdminstrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Send_Credit_Card_Quote" xsi:type="WebServiceGatewayFactsType">
+      <name>Send Credit Card Quote</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>2</index>
+        <name>CreditCardQuoteRequired</name>
+        <type>CreditCardQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>CreditCardQuote</name>
+        <type>CreditCardQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Send_Home_Insurance_Quote" xsi:type="WebServiceGatewayFactsType">
+      <name>Send Home Insurance Quote</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>HomeInsuranceQuoteRequired</name>
+        <type>HomeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>2</index>
+        <name>HomeInsuranceQuote</name>
+        <type>HomeInsuranceQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Send_Life_Insurance_Quote" xsi:type="WebServiceGatewayFactsType">
+      <name>Send Life Insurance Quote</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>LifeInsuranceQuoteRequired</name>
+        <type>LifeInsuranceQuoteRequired</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>2</index>
+        <name>LifeInsuranceQuote</name>
+        <type>LifeInsuranceQuote</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+        <defaultValue />
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Update_Application" xsi:type="WebServiceGatewayFactsType">
+      <name>Update Application</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <inputParam>
+        <index>1</index>
+        <name>AdministrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>0</index>
+        <name>LoanApplication</name>
+        <type>LoanApplication</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <outputParam>
+        <index>1</index>
+        <name>AdministrationInformation</name>
+        <type>AdministrationInformation</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+    <decomposition id="Verify_repayment_agreement" xsi:type="WebServiceGatewayFactsType">
+      <name>Verify repayment agreement</name>
+      <inputParam>
+        <index>0</index>
+        <name>LoanApplicationID</name>
+        <type>string</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </inputParam>
+      <outputParam>
+        <index>1</index>
+        <name>AgreementSummary</name>
+        <type>AgreementSummary</type>
+        <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+      </outputParam>
+      <externalInteraction>manual</externalInteraction>
+    </decomposition>
+  </specification>
+  <layout>
+    <locale language="en" country="AU"/>
+    <specification id="Loan_Assesment_Final" defaultBgColor="-526351">
+      <size w="58" h="28"/>
+      <net id="Net" bgColor="-526351">
+        <bounds x="0" y="0" w="1442" h="591"/>
+        <frame x="0" y="0" w="1303" h="609"/>
+        <viewport x="0" y="0" w="1303" h="609"/>
+        <scale>0.8299999999999998</scale>
+        <vertex id="OutputCondition">
+          <attributes>
+            <bounds x="1,680" y="360" w="33" h="33"/>
+          </attributes>
+        </vertex>
+        <vertex id="InputCondition">
+          <attributes>
+            <bounds x="24" y="332" w="32" h="32"/>
+          </attributes>
+        </vertex>
+        <container id="Send_Home_Insurance_Quote">
+          <vertex>
+            <attributes>
+              <bounds x="1,032" y="335" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="999" y="369" w="97" h="61"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Enter_the_Application_Data">
+          <vertex>
+            <attributes>
+              <bounds x="124" y="332" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="92" y="364" w="97" h="61"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Generate_Application_ID">
+          <vertex>
+            <attributes>
+              <bounds x="208" y="336" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="176" y="368" w="97" h="41"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Calculate_Loan_Repayment">
+          <vertex>
+            <attributes>
+              <bounds x="415" y="363" w="32" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="382" y="398" w="97" h="41"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Verify_repayment_agreement">
+          <vertex>
+            <attributes>
+              <bounds x="1,184" y="368" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,148" y="400" w="96" h="60"/>
+            </attributes>
+          </label>
+          <decorator type="OR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="1,174" y="368" w="11" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Update_Application">
+          <vertex>
+            <attributes>
+              <bounds x="456" y="175" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="425" y="209" w="97" h="41"/>
+            </attributes>
+          </label>
+          <decorator type="OR_split">
+            <position>10</position>
+            <attributes>
+              <bounds x="456" y="165" w="33" h="12"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Send_Credit_Card_Quote">
+          <vertex>
+            <attributes>
+              <bounds x="1,108" y="271" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,076" y="305" w="97" h="41"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Send_Life_Insurance_Quote">
+          <vertex>
+            <attributes>
+              <bounds x="1,008" y="506" w="33" h="34"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="976" y="538" w="97" h="61"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Perform_Checks">
+          <vertex>
+            <attributes>
+              <bounds x="515" y="351" w="34" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="488" y="382" w="97" h="41"/>
+            </attributes>
+          </label>
+          <decorator type="AND_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="546" y="351" w="13" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Archive_application">
+          <vertex>
+            <attributes>
+              <bounds x="1,572" y="352" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,534" y="385" w="97" h="41"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="1,562" y="352" w="12" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Prepare_and_Send_Acceptance_package">
+          <vertex>
+            <attributes>
+              <bounds x="880" y="364" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="852" y="396" w="96" h="80"/>
+            </attributes>
+          </label>
+          <decorator type="OR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="911" y="364" w="11" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Final_Decision">
+          <vertex>
+            <attributes>
+              <bounds x="1,304" y="396" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,276" y="428" w="96" h="20"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="1,335" y="396" w="11" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Rejected_Application">
+          <vertex>
+            <attributes>
+              <bounds x="1,293" y="80" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="1,260" y="113" w="96" h="40"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="1,324" y="80" w="11" h="32"/>
+            </attributes>
+          </decorator>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="1,283" y="80" w="11" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Credit_History_Check">
+          <vertex>
+            <attributes>
+              <bounds x="612" y="451" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="581" y="481" w="97" h="41"/>
+            </attributes>
+          </label>
+        </container>
+        <container id="Perform_Risk_Assesment">
+          <vertex>
+            <attributes>
+              <bounds x="727" y="311" w="33" h="33"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="697" y="345" w="97" h="41"/>
+            </attributes>
+          </label>
+          <decorator type="AND_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="717" y="311" w="12" h="33"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Check_for_completeness">
+          <vertex>
+            <attributes>
+              <bounds x="339" y="327" w="35" h="35"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="309" y="362" w="97" h="41"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="370" y="327" w="14" h="35"/>
+            </attributes>
+          </decorator>
+          <decorator type="XOR_join">
+            <position>12</position>
+            <attributes>
+              <bounds x="329" y="327" w="14" h="35"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Eligibilty_Check">
+          <vertex>
+            <attributes>
+              <bounds x="792" y="364" w="32" h="32"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="764" y="395" w="97" h="40"/>
+            </attributes>
+          </label>
+          <decorator type="XOR_split">
+            <position>13</position>
+            <attributes>
+              <bounds x="823" y="364" w="11" h="32"/>
+            </attributes>
+          </decorator>
+        </container>
+        <container id="Property_Appraisal_Check">
+          <vertex>
+            <attributes>
+              <bounds x="608" y="258" w="34" h="34"/>
+            </attributes>
+          </vertex>
+          <label>
+            <attributes>
+              <bounds x="574" y="292" w="97" h="61"/>
+            </attributes>
+          </label>
+        </container>
+        <flow source="Prepare_and_Send_Acceptance_package" target="Verify_repayment_agreement">
+          <ports in="3" out="3"/>
+          <attributes>
+            <lineStyle>13</lineStyle>
+            <points>
+              <value x="921" y="387.25"/>
+              <value x="1,045" y="452"/>
+              <value x="1,174" y="391.25"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Credit_History_Check" target="Perform_Risk_Assesment">
+          <ports in="13" out="3"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="603" y="459.5"/>
+              <value x="690" y="359.25"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Property_Appraisal_Check" target="Perform_Risk_Assesment">
+          <ports in="13" out="3"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="467" y="271.5"/>
+              <value x="690" y="359.25"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Final_Decision" target="Archive_application">
+          <ports in="2" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,349" y="411.5"/>
+              <value x="1,418" y="375.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Verify_repayment_agreement" target="Final_Decision">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,219" y="383.5"/>
+              <value x="1,308" y="411.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Send_Home_Insurance_Quote" target="Verify_repayment_agreement">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,063.627" y="351.452"/>
+              <value x="1,174" y="383.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Generate_Application_ID" target="Check_for_completeness">
+          <ports in="13" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="239" y="351.5"/>
+              <value x="314" y="351.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Check_for_completeness" target="Update_Application">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="365" y="351.5"/>
+              <value x="376" y="115.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Check_for_completeness" target="Calculate_Loan_Repayment">
+          <ports in="3" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Enter_the_Application_Data" target="Generate_Application_ID">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="155" y="347.5"/>
+              <value x="208" y="351.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Prepare_and_Send_Acceptance_package" target="Send_Home_Insurance_Quote">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="925" y="379.5"/>
+              <value x="980" y="363.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Perform_Checks" target="Property_Appraisal_Check">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Rejected_Application" target="Archive_application">
+          <ports in="4" out="1"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,109" y="171"/>
+              <value x="1,302" y="367.75"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Prepare_and_Send_Acceptance_package" target="Send_Life_Insurance_Quote">
+          <ports in="3" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="925" y="387.25"/>
+              <value x="1,016" y="463.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Perform_Risk_Assesment" target="Eligibilty_Check">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Prepare_and_Send_Acceptance_package" target="Rejected_Application">
+          <ports in="1" out="0"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="921" y="371.75"/>
+              <value x="1,288" y="111"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Eligibilty_Check" target="Prepare_and_Send_Acceptance_package">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Eligibilty_Check" target="Rejected_Application">
+          <ports in="1" out="2"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Update_Application" target="Rejected_Application">
+          <ports in="4" out="4"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="407" y="95"/>
+              <value x="1,068" y="140"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="InputCondition" target="Enter_the_Application_Data">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="55" y="347.5"/>
+              <value x="124" y="347.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Update_Application" target="Check_for_completeness">
+          <ports in="1" out="4"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="383.75" y="90"/>
+              <value x="319" y="336"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Final_Decision" target="Rejected_Application">
+          <ports in="1" out="0"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Send_Credit_Card_Quote" target="Verify_repayment_agreement">
+          <ports in="13" out="4"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,095" y="311.5"/>
+              <value x="1,183" y="368"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Prepare_and_Send_Acceptance_package" target="Send_Credit_Card_Quote">
+          <ports in="1" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="925" y="371.75"/>
+              <value x="1,064" y="311.5"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Archive_application" target="OutputCondition">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Send_Life_Insurance_Quote" target="Verify_repayment_agreement">
+          <ports in="13" out="0"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+            <points>
+              <value x="1,047" y="463.5"/>
+              <value x="1,183" y="399"/>
+            </points>
+          </attributes>
+        </flow>
+        <flow source="Calculate_Loan_Repayment" target="Perform_Checks">
+          <ports in="13" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+        <flow source="Perform_Checks" target="Credit_History_Check">
+          <ports in="2" out="12"/>
+          <attributes>
+            <lineStyle>11</lineStyle>
+          </attributes>
+        </flow>
+      </net>
+    </specification>
+  </layout>
+</specificationSet>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orgdata>
+  <participants>
+    <participant id="PA-3df76a7e-23f5-4fdf-ab3c-c67250b7529b">
+      <userid>UXJ</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Urusa X</firstname>
+      <lastname>Jack</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-e04fe6cd-fbfe-4379-87e3-785037224861</role>
+      </roles>
+      <positions>
+        <position>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-aa13a790-41d5-4d0f-bae9-b7058a3c8dfc">
+      <userid>HT</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Harshit</firstname>
+      <lastname>Tyagi</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-e04fe6cd-fbfe-4379-87e3-785037224861</role>
+      </roles>
+      <positions>
+        <position>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-d2377be0-2bbe-4577-9acf-92247f0bd88e">
+      <userid>AVJ</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Aakash V</firstname>
+      <lastname>Jadhav</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-e04fe6cd-fbfe-4379-87e3-785037224861</role>
+      </roles>
+      <positions>
+        <position>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-4e90075f-0a4c-49e0-b19c-bd19e7f767a2">
+      <userid>RP</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Rishabh</firstname>
+      <lastname>Pant</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-2c18e4ac-db80-4c82-bf54-782fe32197fe</role>
+      </roles>
+      <positions>
+        <position>PO-38d6181d-0636-4687-9b7f-253c244d3d8e</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-78c79485-8735-49b5-b8e8-7e6ffbaaef57">
+      <userid>VK</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Virat</firstname>
+      <lastname>Kohli</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-844730f0-07b0-43bc-83be-45bcd4ea4b3a</role>
+      </roles>
+      <positions>
+        <position>PO-02244d4d-1718-4741-9c2b-b3ba007a46e4</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-cac7b284-ba12-4fde-acf1-230c134753de">
+      <userid>RS</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Rohit</firstname>
+      <lastname>Sharma</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-e5e8f913-2ef6-44b7-834c-dab2ece10034</role>
+      </roles>
+      <positions>
+        <position>PO-91707dd1-f7a4-4722-8cfa-5679f7bb6a94</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+    <participant id="PA-bf8646b6-43b1-4109-bb22-7eff33afba63">
+      <userid>AV</userid>
+      <password>0L4txCG+T80BcuWvzuo5cOLz2UA=</password>
+      <firstname>Akash</firstname>
+      <lastname>Vanvariya</lastname>
+      <description/>
+      <notes/>
+      <isAdministrator>false</isAdministrator>
+      <roles>
+        <role>RO-e04fe6cd-fbfe-4379-87e3-785037224861</role>
+      </roles>
+      <positions>
+        <position>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</position>
+      </positions>
+      <capabilities/>
+      <privileges>00000000</privileges>
+    </participant>
+  </participants>
+  <roles>
+    <role id="RO-844730f0-07b0-43bc-83be-45bcd4ea4b3a">
+      <name>Financial Officer</name>
+      <description/>
+      <notes/>
+    </role>
+    <role id="RO-2c18e4ac-db80-4c82-bf54-782fe32197fe">
+      <name>Insuarance Sales Representative</name>
+      <description/>
+      <notes/>
+    </role>
+    <role id="RO-e04fe6cd-fbfe-4379-87e3-785037224861">
+      <name>Loan Officer</name>
+      <description/>
+      <notes/>
+    </role>
+    <role id="RO-e5e8f913-2ef6-44b7-834c-dab2ece10034">
+      <name>Property Valuer</name>
+      <description/>
+      <notes/>
+    </role>
+  </roles>
+  <positions>
+    <position id="PO-02244d4d-1718-4741-9c2b-b3ba007a46e4">
+      <title>Finanial Officer</title>
+      <positionid/>
+      <description/>
+      <notes/>
+      <orggroupid>OG-0a291564-4abd-4f4e-856e-24b1698c3b57</orggroupid>
+      <reportstoid>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</reportstoid>
+    </position>
+    <position id="PO-38d6181d-0636-4687-9b7f-253c244d3d8e">
+      <title>Insuarance Sales Representative</title>
+      <positionid/>
+      <description/>
+      <notes/>
+      <orggroupid>OG-e22a1c6b-9a50-4852-b6ce-f585dc366f77</orggroupid>
+      <reportstoid>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</reportstoid>
+    </position>
+    <position id="PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d">
+      <title>Loan Officer</title>
+      <positionid/>
+      <description/>
+      <notes/>
+      <orggroupid>OG-05aafc42-47ec-4362-8b9b-7e48c0c6f6ac</orggroupid>
+    </position>
+    <position id="PO-91707dd1-f7a4-4722-8cfa-5679f7bb6a94">
+      <title>Property Valuer</title>
+      <positionid/>
+      <description/>
+      <notes/>
+      <orggroupid>OG-05aafc42-47ec-4362-8b9b-7e48c0c6f6ac</orggroupid>
+      <reportstoid>PO-46ad247d-5fdc-496e-a5bc-f7e004fcff8d</reportstoid>
+    </position>
+  </positions>
+  <capabilities/>
+  <orggroups>
+    <orggroup id="OG-0a291564-4abd-4f4e-856e-24b1698c3b57">
+      <groupName>Financial Department</groupName>
+      <groupType>DEPARTMENT</groupType>
+      <description/>
+      <notes/>
+    </orggroup>
+    <orggroup id="OG-e22a1c6b-9a50-4852-b6ce-f585dc366f77">
+      <groupName>Insuarance Sales Department</groupName>
+      <groupType>GROUP</groupType>
+      <description/>
+      <notes/>
+    </orggroup>
+    <orggroup id="OG-05aafc42-47ec-4362-8b9b-7e48c0c6f6ac">
+      <groupName>Loan Department</groupName>
+      <groupType>GROUP</groupType>
+      <description/>
+      <notes/>
+    </orggroup>
+  </orggroups>
+  <nonhumanresources/>
+  <nonhumancategories/>
+</orgdata>
+
